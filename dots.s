@@ -151,7 +151,7 @@ clearPixels
 	rts
 
 
-cpt
+clearPixelTemplate	; this is the code that is used as a template to generate unrolled code
 		move.w	(a0)+,d1				;8	get location					;2
 		move.l	d1,a1					;4	screenptr						;2
 		move.w	d0,(a1)					;8	clear screen			20		;2		--> 6 1400*6 = 8400
@@ -179,7 +179,7 @@ cpt
 
 
 generateClearPixels
-	lea		cpt,a0
+	lea		clearPixelTemplate,a0
 	move.l	clearPixelsPointer,a1								;		8400 +2
 	movem.l	(a0),d0-d6/a2-a6		;7+5 = 12*4 = 48	= 8 times
 	move.w	#max_dots/40-1,d7
@@ -263,7 +263,7 @@ drawPixel
 ;	ENDR
 ;	rts
 
-dpt
+drawPixelTemplate	; this is the code that is used as a template to generate unrolled code
 		move.w	(a2)+,d0				;8							;x1				
 ;		add.w	(a5)+,d0				;8							;x2		; these 2 tables sohuld be merged for nice dots
 
@@ -317,7 +317,7 @@ dpt
 		;	
 
 generateDrawPixels
-	lea		dpt,a0
+	lea		drawPixelTemplate,a0
 	move.l	drawPixelsPointer,a1
 
 	movem.l	(a0),d0-d6/a2-a4			;11 = 40
