@@ -1,6 +1,7 @@
 ; little dots example for harekiet
-; one optimiation to save 11.25 scanlines identified
-;
+; - one optimiation to save 11.25 scanlines identified
+; - another optimization is to move one scree to lower memory, and use 2 bitplanes on 1 screen, and this would reduce 4 cycles for clearing rout
+;	from 20 to 16 cycles
 ; for feedback or questions, #atariscne @ ircnet
 
 max_dots				equ 1920-40
